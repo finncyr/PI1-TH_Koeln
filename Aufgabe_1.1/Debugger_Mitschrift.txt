@@ -1,0 +1,28 @@
+###---AUFGABE 1.1---###
+
+# Werte 2 und 5 #
+
+eins = 2
+zwei = 5
+
+eins=eins*zwei 	=> eins=15
+eins+=zwei*5 	=> eins=30
+eins-=eins*3 	=> eins=-60
+
+# Werte 16 und 256 #
+
+eins = 16
+zwei = 256
+
+eins=eins*zwei 	=> eins=4096
+eins+=zwei*5 	=> eins=5376
+eins-=eins*3 	=> eins=-10752
+
+# Werte 40000 und 30 #
+
+eins = 40000
+zwei = 30
+
+eins=eins*zwei 	=> eins=1200000
+eins+=zwei*5 	=> eins=1200150
+eins-=eins*3 	=> eins=-2400300
