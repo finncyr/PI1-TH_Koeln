@@ -1,0 +1,5 @@
+# depslib dependency file v1.0
+1508347882 source:c:\users\fcyri\sciebo\pi\codeblocks\debugg_01\main.c
+	<stdio.h>
+	<stdlib.h>
+
