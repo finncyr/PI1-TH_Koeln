@@ -1,0 +1,6 @@
+# depslib dependency file v1.0
+1508534342 source:c:\users\fcyri\sciebo\pi\codeblocks\aufgabe_1.2\vek.c
+	<stdio.h>
+	<stdlib.h>
+	<math.h>
+
