@@ -5,7 +5,7 @@
 
 #define _USE_MATH_DEFINES
 
-int M_eingabe, fehlerwert;
+int M_eingabe, fehlerwert, check;
 int i, doppeljahr;
 float zinssatz, startkap, endkap, jahre, faktor;
 
@@ -19,16 +19,16 @@ int zinsenrechner()
   printf("Bitte geben sie die Zinswerte ein:\n\n");
 
   printf("Startkapital:\t ");
-  scanf("%f", &startkap);
-  if(startkap < 0){printf("Eingabe fehlerhaft!\n"); return -1;}
+  check = scanf("%f", &startkap);
+  if(check != 1 || startkap <= 0) return -1;
 
   printf("\nZinssatz:\t ");
-  scanf("%f", &zinssatz);
-  if(zinssatz < 0){printf("Eingabe fehlerhaft!\n"); return -1;}
+  check = scanf("%f", &zinssatz);
+  if(check != 1 || zinssatz <= 0) return -1;
 
   printf("\nJahre:\t\t ");
-  scanf("%f", &jahre);
-  if(jahre < 0){printf("Eingabe fehlerhaft!\n"); return -1;}
+  check = scanf("%f", &jahre);
+  if(check != 1 || jahre <= 0) return -1;
   printf("\n\n");
 
   printf("Jahr:\tKontostand:\n");
@@ -83,7 +83,7 @@ int main()
       {
         case 1:
           system("cls");
-          if(zinsenrechner() == -1)printf("ERROR!\n");
+          if(zinsenrechner() == -1)printf("\nFehler bei der Eingabe in Programm 1!\n");
 
           system("pause");                                                      //PAUSE-Funktion
           break;
