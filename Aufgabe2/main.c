@@ -32,8 +32,8 @@ void pausescr(void)
   #ifdef _WIN32
     system("pause");
   #elif defined(unix) || defined(__unix__) || defined(__unix) || (defined(__APPLE__) && defined(__MACH__))
-    printf("Belibige Taste dr\x81cken...\n");
-    system("read -n1");
+    printf("Enter druecken zum fortfahren...\n");
+    system("read");
   #else
     #error "OS not supported."
   #endif

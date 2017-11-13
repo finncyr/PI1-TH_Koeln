@@ -1,0 +1,8 @@
+### WINDOWS ###
+
+
+
+### LINUX ###
+
+  erkennt immer noch ("cls")
+  pause-Workaround klappt nicht
