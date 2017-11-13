@@ -30,7 +30,7 @@ void clearscr(void)
 void pausescr(void)
 {
   #ifdef _WIN32
-      system("pause");
+    system("pause");
   #elif defined(unix) || defined(__unix__) || defined(__unix) || (defined(__APPLE__) && defined(__MACH__))
     system("read -rsp $'Press enter to continue...\n'");
   #else
