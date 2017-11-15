@@ -6,7 +6,7 @@ short zahl, zZt, zT, zH, zZ, zE;
 
 int main()
 {
-    printf("Bitte geben sie eine Zahl ein: (max. 32767)\n");
+    printf("Bitte geben sie eine Zahl ein: (max. +-32767)\n");
     scanf("%hd", &zahl);
 
     zZt  = (zahl % 100000)/10000;
