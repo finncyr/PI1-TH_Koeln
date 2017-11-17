@@ -46,7 +46,10 @@ void pausescr(void)
 }
 
 
+
+
 //---------------ZINSRECHNER-FUNKTION-----------------//
+//                    Aufgabe 2.1                     //
 
 int zinsenrechner()
 {
@@ -99,6 +102,7 @@ int zinsenrechner()
 }
 
 //---------------AUTOMAT-FUNKTION-------------------//
+//                  Aufgabe 2.2                     //
 
 int automat()
 {
