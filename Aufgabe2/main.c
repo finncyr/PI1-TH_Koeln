@@ -12,8 +12,8 @@
 
 char enter;
 int M_eingabe, fehlerwert, check;
-int i, doppeljahr;
-float zinssatz, startkap, endkap, jahre, faktor;
+int i;
+float zinssatz, startkap, endkap, jahre, faktor, doppeljahr;
 
 //---------------CLEAR-SCREEN-FUNKTION----------------//
 
@@ -57,15 +57,15 @@ int zinsenrechner()
 
   printf("Bitte geben sie die Zinswerte ein:\n\n");
 
-  printf("Startkapital:\t ");
+  printf("Startkapital:\t\t ");
   check = scanf("%f", &startkap);
   if(check != 1 || startkap <= 0) return -1;
 
-  printf("\nZinssatz:\t ");
+  printf("\nZinssatz(Prozent):\t ");
   check = scanf("%f", &zinssatz);
   if(check != 1 || zinssatz <= 0) return -1;
 
-  printf("\nJahre:\t\t ");
+  printf("\nJahre:\t\t\t ");
   check = scanf("%f", &jahre);
   if(check != 1 || jahre <= 0) return -1;
   printf("\n\n");
@@ -78,25 +78,17 @@ int zinsenrechner()
   {
       endkap = startkap * pow((1 + zinssatz/100), i);
 
-      if(endkap >= 2*startkap && trigger)
-      {
-        doppeljahr = i;
-        trigger = false;
-      }
-
       printf("%i\t%.02f\n", i, endkap);
   }
 
   printf("\n");
 
   faktor = endkap/startkap;
-
   printf("Der Faktor nach %.f Jahren Verzinsung ist: %f\n\n", jahre, faktor);
 
-  if(doppeljahr != 0)
-  {
-    printf("Nach %i Jahren wurde der Startbetrag verdoppelt!\n\n", doppeljahr);
-  }
+
+  doppeljahr = log(2)/log(1+(zinssatz/100));
+  printf("Nach %f Jahren w\x84re der Betrag verdoppelt!\n\n", doppeljahr);
 
   return 0;
 }
