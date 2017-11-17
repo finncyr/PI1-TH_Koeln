@@ -1,5 +1,7 @@
 ### WINDOWS ###
 
+  Getränkeautomat:
+    Wenn Geld mehr als 2 Nachkommastellen hat -> Fehlermeldung
 
 
 ### LINUX ###

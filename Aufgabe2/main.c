@@ -1,3 +1,8 @@
+/*
+    AUFGABE 2   -   PI PRAKTIKUM 2017
+    Ersteller:      Finn Cyriax
+    Getestet unter: gcc auf Windows 10 1703 und Ubuntu 16.10
+*/
 #include <stdio.h>
 #include <stdlib.h>
 #include <math.h>
@@ -29,11 +34,12 @@ void clearscr(void)
 
 void pausescr(void)
 {
+  int pause;
   #ifdef _WIN32
     system("pause");
   #elif defined(unix) || defined(__unix__) || defined(__unix) || (defined(__APPLE__) && defined(__MACH__))
-    printf("Enter druecken zum fortfahren...\n");
-    system("read");
+    printf("\nTippen sie eine 1 zum fortfahren: ");
+    scanf("%i", &pause);
   #else
     #error "OS not supported."
   #endif
@@ -92,10 +98,12 @@ int zinsenrechner()
   return 0;
 }
 
+//---------------AUTOMAT-FUNKTION-------------------//
+
 int automat()
 {
   int a_wahl, G_ct, G_eu, G_2, G_1, G_50, G_20, G_10, G_05, G_02, G_01;
-  float geld, geld_cent, geld_euro;
+  float geld;
 
   void automat_header(void)
   {
@@ -144,6 +152,8 @@ int automat()
     G_ct = G_ct - (G_01 * 1);
 
     printf("\n");
+
+    return 0;
   }
 
   // BEGINN HAUPTFUNKTION
@@ -157,6 +167,8 @@ int automat()
   if(geld < 10){ printf("BITTE MIN. 10 EURO EINWERFEN!\n\n"); return -1;}
 
   clearscr();
+
+  a_wahl = 0;
 
   automat_header();
 
@@ -187,11 +199,22 @@ int automat()
       break;
 
     default:
-      return -1;
-
+      printf("Bitte gültiges Getr\x84nk eingeben!\n");
+      break;
   }
 
   return 0;
+}
+
+//--------------PRIMZAHL-FUNKTION----------------//
+
+int primzahlen()
+{
+  int primzahlen[1];
+  long double schranke;
+
+
+
 }
 
 //--------------MAIN-FUNKTION--------------------//
