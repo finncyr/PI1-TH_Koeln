@@ -1,19 +1,21 @@
 /*
     AUFGABE 2   -   PI PRAKTIKUM 2017
+
     Ersteller:      Finn Cyriax
     Getestet unter: gcc auf Windows 10 1703 und Ubuntu 16.10
 
     pausescr und clearscr sind optional und wurden von mir zur Verschönerung
     des Menüs hinzugefügt.
 
-    Kommentare zu (fast) doppelten Funktionen wurden weggelassen
+    Kommentare zu (fast) gleichen Zeilen wurden weggelassen
 */
 #include <stdio.h>
 #include <stdlib.h>
 #include <math.h>
-#include <stdbool.h>
+#include <time.h>
 
 #define _USE_MATH_DEFINES
+#define CLOCKS_PER_MS (CLOCKS_PER_SEC / 1000)
 
 int fehlerwert, check;
 int i;
@@ -75,7 +77,6 @@ int zinsenrechner()
 
   printf("Jahr:\tKontostand:\n");                       // Tabellenüberschrift
 
-  bool trigger = true;
 
   for(i = 0; i <= jahre; i++)                           // Schleife für Zinstabelle
   {
@@ -208,10 +209,61 @@ int automat()
 //              under construction               //
 int primzahlen()
 {
-  int primzahlen[1];
-  long double schranke;
+  /////////////////////////
+  int primcheck(int n)
+  {
+    int i;
 
+    if(n < 2)  return 0;
+    if(n == 2) return 1;
 
+    if((n % 2) == 0) return 0;
+
+    for(i = 3; i <= sqrt(n); i += 2)
+    {
+      if((n % i) == 0) return 0;
+    }
+
+    return 1;
+  }
+
+  long schranke, testtest, j, x, array_count, P_check;
+  int time1, time2, thou;
+
+  printf("Bitte obere Schranke eingeben: \n");
+  scanf("%ld", &schranke);
+  printf("\n");
+
+  int primzahlen[schranke];
+  array_count = 0;
+
+  time1 = clock();
+
+  for(j = 0; j <= schranke; j++)
+  {
+    P_check = primcheck(j);
+
+    if(P_check == 1)
+    {
+      primzahlen[array_count] = j;
+      array_count++;
+    }
+  }
+
+  time2 = clock();
+
+  thou  = (time2 - time1) / CLOCKS_PER_MS;
+
+  x = 0;
+
+  while(x < array_count)
+  {
+    printf("%ld ist eine Primzahl\n", primzahlen[x]);
+    x++;
+  }
+
+  printf("\nEs wurden %ld Primzahlen gefunden!\n", array_count);
+  printf("Die Berrechnung dauerte %ld ms!\n\n", thou);
 
 }
 
@@ -252,7 +304,7 @@ int main()
 
         case 3:
           clearscr();
-          printf("Primzahlen-Platzhalter\n");
+          primzahlen();
 
           pausescr();
           break;
