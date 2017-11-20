@@ -2,26 +2,33 @@
     AUFGABE 2   -   PI PRAKTIKUM 2017
 
     Ersteller:      Finn Cyriax
-    Getestet unter: gcc auf Windows 10 1703 und Ubuntu 16.10
+    Getestet unter: gcc auf Windows 10 und Ubuntu 16.10
+
+        MENÜ: Zeile 287
+        2.1 : Zeile  65
+        2.2 : Zeile 112
+        2.3 : Zeile 220
 
     pausescr und clearscr sind optional und wurden von mir zur Verschönerung
     des Menüs hinzugefügt.
 
     Kommentare zu (fast) gleichen Zeilen wurden weggelassen
+
+    Da ich immer etwas vor den Deadlines bin ignorieren sie bitte die
+    nicht relevanten Funktionen. Entsprechende Aufgaben sind betitelt.
 */
 #include <stdio.h>
 #include <stdlib.h>
 #include <math.h>
 #include <time.h>
 
-#define _USE_MATH_DEFINES
-#define CLOCKS_PER_MS (CLOCKS_PER_SEC / 1000)
+#define _USE_MATH_DEFINES                               // Ruft mathematische Variablen wie Pi auf
+#define CLOCKS_PER_MS (CLOCKS_PER_SEC / 1000)           // Aufgabe 2.3: Zeit soll in ms ausgegeben werden, daher s/1000=ms
 
 int fehlerwert, check;
-int i;
-float zinssatz, startkap, endkap, jahre, faktor, doppeljahr;
 
 //---------------CLEAR-SCREEN-FUNKTION----------------//
+//    Funktion zum Löschen des Bildschirminhaltes     //
 
 void clearscr(void)
 {
@@ -36,17 +43,19 @@ void clearscr(void)
 }
 
 //-----------------PAUSE-FUNKTION---------------------//
+// Funktion um vor dem Löschen des Bildschirminhaltes //
+//        dem Nutzer sein Ergebnis anzuzeigen         //
 
 void pausescr(void)
 {
-  int pause;
+  char pause;
   #ifdef _WIN32
-    system("pause");
+    system("pause");                // Windows interner pause-Befehl
   #elif defined(unix) || defined(__unix__) || defined(__unix) || (defined(__APPLE__) && defined(__MACH__))
-    printf("\nTippen sie eine 1 zum fortfahren: ");
-    scanf("%i", &pause);
+    printf("\nTippen sie ein j zum fortfahren: ");
+    scanf(" %c", &pause);           // Linux Workaround mit einer scanf Eingabe
   #else
-    #error "OS not supported."
+    #error "OS not supported."      // Error falls anderes Betriebssystem
   #endif
 }
 
@@ -58,19 +67,22 @@ void pausescr(void)
 
 int zinsenrechner()
 {
-  startkap = 0; zinssatz = 0; jahre = 0;
+  float zinssatz, startkap, endkap, jahre, faktor, doppeljahr;
+  int i;
+
+  startkap = 0; zinssatz = 0; jahre = 0, check = 1;     // Setzten der Standardwerte
 
   printf("Bitte geben sie die Zinswerte ein:\n\n");
 
   printf("Startkapital:\t\t ");
-  check = scanf("%f", &startkap);
+  check = scanf("%f", &startkap);                       // Einlesen des scanf-Rückgabewertes als Variable
   if(check != 1 || startkap <= 0) return -1;            // Check ob positive Gleitkommazahl eingegeben wurde
 
   printf("\nZinssatz(Prozent):\t ");
   check = scanf("%f", &zinssatz);
   if(check != 1 || zinssatz <= 0) return -1;
 
-  printf("\nJahre:\t\t\t ");
+  printf("\nvolle Jahre:\t\t ");
   check = scanf("%f", &jahre);
   if(check != 1 || jahre <= 0) return -1;
   printf("\n\n");
@@ -82,7 +94,7 @@ int zinsenrechner()
   {
       endkap = startkap * pow((1 + zinssatz/100), i);   // Zinseszinsformel
 
-      printf("%i\t%.02f\n", i, endkap);
+      printf("%i\t%.02f\n", i, endkap);                 // Ausgeben der Werte
   }
 
   printf("\n");
@@ -94,7 +106,7 @@ int zinsenrechner()
   doppeljahr = log(2)/log(1+(zinssatz/100));            // Verdopplungsjahrberrechnung
   printf("Nach %f Jahren w\x84re der Betrag verdoppelt!\n\n", doppeljahr);
 
-  return 0;
+  return 0;                                             // Nach erfolgreichem Beenden
 }
 
 //---------------AUTOMAT-FUNKTION-------------------//
@@ -105,7 +117,7 @@ int automat()
   int a_wahl, G_ct, G_eu, G_2, G_1, G_50, G_20, G_10, G_05, G_02, G_01;
   float geld;
 
-  void automat_header(void)                                 // Definition eines Programm-Headers
+  void AutomatHeader(void)                                 // Definition eines Programm-Headers
   {
     printf("#######################################\n");
     printf("------------GETR\x8ENKE-AUTOMAT-----------\n");
@@ -157,7 +169,7 @@ int automat()
 
   // BEGINN HAUPTFUNKTION AUTOMAT
 
-  automat_header();
+  AutomatHeader();
 
   printf("Wie viel Geld wurde eingeworfen? (Bsp: 13.37)\n");
   scanf("%f", &geld);
@@ -169,7 +181,7 @@ int automat()
 
   a_wahl = 0;
 
-  automat_header();
+  AutomatHeader();
 
   printf("Getr\x84nk\t\tPreis\t\tNummer\n\n");      // Tabelle der Getränke
   printf("Wasser\t\t1.50 Euro\t1\n");
@@ -206,7 +218,8 @@ int automat()
 }
 
 //--------------PRIMZAHL-FUNKTION----------------//
-//              under construction               //
+//                 Aufgabe 2.3                   //
+
 int primzahlen()
 {
   /////////////////////////
@@ -226,12 +239,15 @@ int primzahlen()
 
     return 1;
   }
+  ////////////////////////
 
-  long schranke, testtest, j, x, array_count, P_check;
+
+  long schranke, j, x, array_count, P_check;
   int time1, time2, thou;
 
   printf("Bitte obere Schranke eingeben: \n");
   scanf("%ld", &schranke);
+  if(schranke < 0) return -1;
   printf("\n");
 
   int primzahlen[schranke];
@@ -258,20 +274,23 @@ int primzahlen()
 
   while(x < array_count)
   {
-    printf("%ld ist eine Primzahl\n", primzahlen[x]);
+    printf("%i ist eine Primzahl\n", primzahlen[x]);
     x++;
   }
 
-  printf("\nEs wurden %ld Primzahlen gefunden!\n", array_count);
-  printf("Die Berrechnung dauerte %ld ms!\n\n", thou);
+  printf("\nEs wurden %li Primzahlen gefunden!\n", array_count);
+  printf("Die Berrechnung dauerte %i ms!\n\n", thou);
 
+  return 0;
 }
 
-//--------------MAIN-FUNKTION--------------------//
+//--------------MAIN-FUNKTION--------------//
+//  Menüführung für einfaches Starten der  //
+//             Unterfunktionen             //
 
 int main()
 {
-    int M_eingabe;
+    int M_eingabe;                                     // Variable für die Menüeingabe
 
     do
     {
@@ -284,14 +303,14 @@ int main()
       printf("Programm beenden\t\t\t\t4\n\n");
 
       printf("Men\x81zahl eingeben:\t");
-      scanf("%i", &M_eingabe);                         // Einlesen der Menüzahl
+      scanf(" %i", &M_eingabe);                         // Einlesen der Menüzahl
 
-      switch(M_eingabe)
+      switch(M_eingabe)                                // Menüwahl-Switch
       {
         case 1:
           clearscr();                                  // Bildschirm clear
           if(zinsenrechner() == -1) printf("\nFehler bei der Eingabe in Programm 1!\n"); // Abfrage ob Fehlermeldung -1
-
+                                                                                         // Gleichzeitig wird die Funktion aufgerufen
           pausescr();                                  //PAUSE-Funktion (wait for input)
           break;
 
@@ -304,7 +323,7 @@ int main()
 
         case 3:
           clearscr();
-          primzahlen();
+          if(primzahlen() == -1) printf("\nFehler bei der Eingabe in Programm 3!\n");
 
           pausescr();
           break;
@@ -313,7 +332,7 @@ int main()
           break;
 
         default:
-          printf("Keine g\x81ltiger Men\x81punkt\n\n");
+          printf("Keine g\x81ltiger Men\x81punkt\n\n");       // Fehlermeldung, falls andere Zahl eingegeben wird
           pausescr();
       }
 
