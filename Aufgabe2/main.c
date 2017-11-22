@@ -68,7 +68,7 @@ void pausescr(void)
 int zinsenrechner()
 {
   float zinssatz, startkap, endkap, jahre, faktor, doppeljahr;
-  int i;
+  int i;                                                // Zählvariable
 
   startkap = 0; zinssatz = 0; jahre = 0, check = 1;     // Setzten der Standardwerte
 
