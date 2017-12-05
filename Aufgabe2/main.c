@@ -7,7 +7,7 @@
         MENÜ: Zeile 287
         2.1 : Zeile  65
         2.2 : Zeile 112
-        2.3 : Zeile 220
+        2.3 : Zeile 226
 
     pausescr und clearscr sind optional und wurden von mir zur Verschönerung
     des Menüs hinzugefügt.
@@ -169,6 +169,30 @@ int automat()
 
   // BEGINN HAUPTFUNKTION AUTOMAT
 
+  a_wahl = 0;
+
+  while(1 == 1){                                      // Unendliche while-Schleife
+
+    AutomatHeader();
+
+    printf("Getr\x84nk\t\tPreis\t\tNummer\n\n");      // Tabelle der Getränke
+    printf("Wasser\t\t1.50 Euro\t1\n");
+    printf("Mountain Dew\t4.20 Euro\t42\n");
+    printf("K\x94lsch\t\t1.00 Euro\t3\n");
+    printf("\n");
+
+    printf("Bitte geben Sie die gew\x81nschte Nummer ein: ");
+    scanf("%i", &a_wahl);
+
+    clearscr();
+
+    if(a_wahl == 1 || a_wahl == 42 || a_wahl == 3) break;  // break aus Schleife
+
+    else {
+      printf("Bitte richtige Nummer eingeben!\n\n");       // ERROR-Nachricht
+    }
+  }
+
   AutomatHeader();
 
   printf("Wie viel Geld wurde eingeworfen? (Bsp: 13.37)\n");
@@ -177,20 +201,6 @@ int automat()
 
   if(geld < 10){ printf("BITTE MIN. 10 EURO EINWERFEN!\n\n"); return -1;} // Abfrage ob mindestens 10€ eingeworfen wurden
 
-  clearscr();
-
-  a_wahl = 0;
-
-  AutomatHeader();
-
-  printf("Getr\x84nk\t\tPreis\t\tNummer\n\n");      // Tabelle der Getränke
-  printf("Wasser\t\t1.50 Euro\t1\n");
-  printf("Mountain Dew\t4.20 Euro\t42\n");
-  printf("K\x94lsch\t\t1.00 Euro\t3\n");
-  printf("\n");
-
-  printf("Bitte geben Sie die gew\x81nschte Nummer ein: ");
-  scanf("%i", &a_wahl);
 
   switch (a_wahl)                 // Fallunterscheidung für Auswahl
   {
@@ -207,10 +217,6 @@ int automat()
     case 3:
       geld = geld - 1.00;
       wechselgeld(geld);
-      break;
-
-    default:
-      printf("Bitte gültiges Getr\x84nk eingeben!\n");    //Fehlermeldung für ungültige Nummer
       break;
   }
 
