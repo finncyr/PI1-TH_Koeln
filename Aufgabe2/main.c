@@ -228,38 +228,40 @@ int automat()
 
 int primzahlen()
 {
-  /////////////////////////
+  // Extrafunktion für Primzahlen
   int primcheck(int n)
+    // return 1 -> Primzahl
+    // return 0 -> keine Primzahl
   {
     int i;
 
-    if(n < 2)  return 0;
+    if(n < 2)  return 0; //kleinste Primzahl = 2
     if(n == 2) return 1;
 
-    if((n % 2) == 0) return 0;
+    if((n % 2) == 0) return 0; //wenn etwas durch 2 Teilbar => keine Primzahl
 
-    for(i = 3; i <= sqrt(n); i += 2)
+    for(i = 3; i <= sqrt(n); i += 2) // Primzahlcheck nur bis Wurzel von Zahl
     {
-      if((n % i) == 0) return 0;
+      if((n % i) == 0) return 0; // Wenn Zahl durch irgendeine Zahl teilbar: keine Primzahl
     }
 
     return 1;
   }
-  ////////////////////////
+  //--------------------------------//
 
 
   long schranke, j, x, array_count, P_check;
-  int time1, time2, thou;
+  clock_t time1, time2, thou;
 
   printf("Bitte obere Schranke eingeben: \n");
   scanf("%ld", &schranke);
   if(schranke < 0) return -1;
   printf("\n");
 
-  int primzahlen[schranke];
+  int primzahlen[schranke / 2];
   array_count = 0;
 
-  time1 = clock();
+  time1 = clock(); //Zeit setzten bei aktuellem Tickstand
 
   for(j = 0; j <= schranke; j++)
   {
