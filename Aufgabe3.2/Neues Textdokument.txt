@@ -1,0 +1,35 @@
+for(i = 0; i < (DIM_SPALTE - 1)*(DIM_ZEILE - 1); i++)
+    {
+        if(spielfeld[x][y] == 'x')
+        {
+
+            Eingabe = 0;
+
+
+
+            scanf("%c", &Eingabe);
+
+            if(Eingabe == '1' || Eingabe == '2' || Eingabe == '3' || Eingabe == '4' || Eingabe == '\n')
+            {
+                spielfeld[x][y] = Eingabe;
+            }
+
+            else
+            {
+                printf("\n\n Nur 1-4 oder Enter eingeben!\n\n");
+                return -1;
+
+            }
+
+            printf("\n");
+            ausgabeSpielfeld(spielfeld);
+        }
+
+        x++;
+
+        if(x == 8)
+        {
+            x = 0;
+            y++;
+        }
+    }
