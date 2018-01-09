@@ -1,9 +1,17 @@
-/*  AUFGABE 3.2 - PI Praktikum
+/** AUFGABE 3.2 - PI Praktikum
  *
  *  Ersteller:  Cyriax
- *  Version:    4
- *  Datum:      04.01.2018
+ *  Version:    2
+ *  Datum:      16.12.2017
  *
+ */
+
+ /* TODO
+
+    RegelFunktion check!
+
+    Hängt sich auf!!
+
  */
 
 
@@ -19,9 +27,6 @@
 bool Playable, WinSwitch;
 
 void spielGeruest(char **spielfeld)
-
-//Baut die graphischen Elemente rund um das Sudokufeld auf
-
 {
     int i = 0, j = 0;
 
@@ -59,9 +64,6 @@ void spielGeruest(char **spielfeld)
 }
 
 void ausgabeSpielfeld(char **spielfeld)
-
-//Gibt das aktuelle Spielfeld auf dem Bildschirm aus
-
 {
     int x = 0, y = 0;
 
@@ -78,9 +80,6 @@ void ausgabeSpielfeld(char **spielfeld)
 }
 
 void sudokuVorlage(char **spielfeld)
-
-//Ermögtlicht es über die Konsole ein Spiel zu erstellen
-
 {
     int x = 0, y = 0, xFeld = 0, yFeld = 0;
     char Eingabe[1];
@@ -104,8 +103,7 @@ void sudokuVorlage(char **spielfeld)
                 xFeld = 0.5 * x + 0.5;
                 yFeld = 0.5 * y + 0.5;
 
-                while(1)
-                {
+                while(1){
                     printf("\nSpalte %i Zeile %i: ", yFeld, xFeld);
 
                     scanf("%s", &Eingabe[0]);
@@ -125,10 +123,6 @@ void sudokuVorlage(char **spielfeld)
 
                         break;
                     }
-                    else
-                    {
-                        printf("Bitte Zahlen von 1-4 verwenden!\n\n");
-                    }
                 }
             }
         }
@@ -147,9 +141,6 @@ void sudokuVorlage(char **spielfeld)
 }
 
 void sudokuStart(char **spielfeld)
-
-//Startet das Spiel sodas man es über die Konsole lösen kann
-
 {
     bool EmptyFields = true, trigger = true;
     int x, y, xFeld, yFeld;
@@ -165,21 +156,8 @@ void sudokuStart(char **spielfeld)
     {
         while(1)
         {
-            while(1)
-            {
-                printf("Geben sie durch ein Komma getrennt Zeile und Spalte ein,\ndie gefüllt werden soll: ");
-                scanf("%i,%i", &xFeld, &yFeld);
-
-                if(xFeld != 1 && xFeld != 2 && xFeld != 3 && xFeld != 4)
-                {
-                    printf("\n###Nur gültige Zahlen eingeben!###\n\n");
-                }
-                else if(yFeld != 1 && yFeld != 2 && yFeld != 3 && yFeld != 4)
-                {
-                    printf("\n###Nur gültige Zahlen eingeben!###\n\n");
-                }
-                else break;
-            }
+            printf("Geben sie durch ein Komma getrennt Zeile und Spalte ein,\ndie gefüllt werden soll: ");
+            scanf("%i,%i", &xFeld, &yFeld);
 
             x = xFeld * 2 - 0.5;
             y = yFeld * 2 - 0.5;
@@ -193,7 +171,7 @@ void sudokuStart(char **spielfeld)
 
                     if(Eingabe[0] != '1' && Eingabe[0] != '2' && Eingabe[0] != '3' && Eingabe[0] != '4')
                     {
-                       printf("\n###Nur gültige Zahlen eingeben!###\n\n");
+                       printf("\n###Nur gültige Zahlen eingeben!###\n");
                     }
                     else
                     {
@@ -206,7 +184,7 @@ void sudokuStart(char **spielfeld)
             }
             else
             {
-                printf("\nBitte leeres Feld angeben!\n\n");
+                printf("\nBitte leeres Feld angeben!\n");
             }
         }
 
@@ -234,9 +212,6 @@ void sudokuStart(char **spielfeld)
 
 
 void sudokuCheck(char **spielfeld)
-
-//Überprüft das aktuelle Spielfeld auf Richtigkeit
-
 {
     bool Regeln, check[4], Fail;
     int x, y, i;
@@ -335,7 +310,7 @@ int main()
 
     sudokuVorlage(spielfeld);
 
-    if(!Playable) //Testen ob Sudoku überhaupt freie Stellen enthält
+    if(!Playable)
     {
         printf("KEINE LEERSTELLEN GELASSEN!\n");
         return -1;

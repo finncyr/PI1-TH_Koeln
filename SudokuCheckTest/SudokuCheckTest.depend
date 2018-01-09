@@ -1,5 +1,5 @@
 # depslib dependency file v1.0
-1515087082 source:c:\users\fcyri\sciebo\pi\codeblocks\aufgabe3.2\main.c
+1514976225 source:c:\users\fcyri\sciebo\pi\codeblocks\sudokuchecktest\main.c
 	<stdio.h>
 	<stdlib.h>
 	<string.h>
