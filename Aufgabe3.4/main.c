@@ -68,6 +68,11 @@ char **zerschneideSatz(char *satz)
         }
     }
 
+    for(i = 0; i < x; i++)
+    {
+        realloc(Teilsatzarray[i], strlen(Teilsatzarray[i]) + 1);
+    }
+
     return Teilsatzarray;
 }
 
