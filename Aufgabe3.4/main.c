@@ -17,7 +17,7 @@ void loescheSonderzeichen(char *satz)
     int i = 0, j = 0;
     char *zwischenspeicher;
 
-    zwischenspeicher = calloc (strlen(satz), sizeof(char));
+    zwischenspeicher = calloc(strlen(satz), sizeof(char));
 
     for(i = 0; i <= strlen(satz); i++)
     {
