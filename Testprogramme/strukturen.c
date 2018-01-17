@@ -1,7 +1,7 @@
 #include <stdlib.h>
 #include <stdio.h>
 
-typedef struct Vektor2 // Als Variablentyp
+typedef struct // Als Variablentyp
 {
   float x;
   float y;
